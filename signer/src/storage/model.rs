@@ -544,6 +544,12 @@ impl From<blockstack_lib::burnchains::Txid> for StacksTxId {
     }
 }
 
+impl From<StacksTxId> for blockstack_lib::burnchains::Txid {
+    fn from(value: StacksTxId) -> Self {
+        value.0
+    }
+}
+
 impl From<[u8; 32]> for StacksTxId {
     fn from(bytes: [u8; 32]) -> Self {
         Self(blockstack_lib::burnchains::Txid(bytes))
